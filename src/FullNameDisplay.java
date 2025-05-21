@@ -1,15 +1,38 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
-public class Main {
-    public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
-        }
+public class FullNameDisplay {
+    public static void main(String[] args) {
+        JFrame frame = new JFrame("Full Name Display");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setSize(600, 200);
+        frame.setLayout(new FlowLayout());
+
+        JTextField firstNameField = new JTextField(10);
+        JTextField lastNameField = new JTextField(10);
+
+        JButton displayButton = new JButton("Display");
+
+        JLabel fullNameLabel = new JLabel("Full Name: ");
+
+        displayButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String firstName = firstNameField.getText();
+                String lastName = lastNameField.getText();
+                fullNameLabel.setText("Full Name: " + firstName + " " + lastName);
+            }
+        });
+
+        frame.add(new JLabel("First Name: "));
+        frame.add(firstNameField);
+        frame.add(new JLabel("Last Name: "));
+        frame.add(lastNameField);
+        frame.add(displayButton);
+        frame.add(fullNameLabel);
+
+        frame.setVisible(true);
     }
 }
